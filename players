@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" lang="en" ng-app="stats">
+
+  <head>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700|Oswald:400,700|Open+Sans' rel='stylesheet' type='text/css'>
+
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="The destination for current and historic NBA statistics."/>
+
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <title>NBA.com/Stats</title>
+
+    
+    <link rel="stylesheet" type="text/css" href="/styles/vendor.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/custom.min.css">
+
+  </head>
+
+  <body>
+
+    <div id="app-container" ng-controller="PageCtrl">
+      <div class="container" id="main-container">
+
+        <div class="row">
+          <div class="col-sm-12">
+            
+
+<div ng-controller="NavBarCtrl" ng-cloak>
+
+  <!--Top 728x90 Ad Space-->
+  <div id="header-ad">
+
+    <div id="ad_bnr_atf_01"></div>
+
+  </div>
+  <!--End Top 728x90 Ad Space-->
+
+  <div class="site-nav">
+    <div id="nbaHeader" data-ng-hide="IS_MOBILE" class="visible-lg"></div>
+
+    <a href="http://www.nba.com">
+    	<img class="nba-logo" src="/media/img/NBA_logo.svg" type="image/svg+xml">
+    </a>
+    <a href="/">
+      <span class="title">
+    	 <span>NBA.com/Stats</span>
+      </span>
+    </a>
+
+    <a href="" class="mobile-nav-toggle hidden-lg" ng-click="headerIsCollapsed=!headerIsCollapsed"><i class="fa fa-bars"></i></a>
+
+
+    <ul class="[ nav-buttons  nav-buttons--extended ]  visible-lg">
+      <li class="button">
+        <a href=""><span>Help</span> <i class="fa fa-caret-down"></i></a>
+        <div class="drop">
+          <a href="/help/"><span>Contact Us</span></a>
+          <a href="/help/glossary"><span>Glossary</span></a>
+          <a href="/help/faq/"><span>FAQ</span></a>
+          <a href="/help/statminimums/"><span>Statistical Minimums</span></a>
+          <a href="/help/whatsnew/"><span>Whats New</span></a>
+          <a href="/help/videostatus/"><span>Video &amp; Tracking Status</span></a>
+        </div>
+      </li>
+
+      <li class="button">
+        <a href=""><span>Other Stats</span> <i class="fa fa-caret-down"></i></a>
+        <div class="drop">
+          <!-- <a href="/playoffpicture/"><span>Playoff Picture</span></a> -->
+          <a href="http://www.nba.com/playoffs/"><span>Playoff Picture</span></a>
+          <a href="/history/"><span>Franchise History</span></a>
+          <a href="/draftcombine/"><span>Draft Combine</span></a>
+          <a href="/drafthistory/"><span>Draft History</span></a>
+          <a href="/transactions/"><span>Transactions</span></a>
+          <a href="/awards/"><span>Awards</span></a>
+     <!-- <a href="/draft/"><span>Draft History</span></a> -->
+     <!-- <a href="/video/"><span>Video</span></a>         -->
+     <!-- <a href="/allstar/"><span>All Star</span></a>    -->
+     <!-- <a href="/awards/"><span>Awards</span></a>       -->
+        </div>
+      </li>
+
+       <li class="button">
+         <a href=""><span>Comparisons</span> <i class="fa fa-caret-down"></i></a>
+         <div class="drop">
+           <a href="/vs/"><span>On/Off Court</span></a>
+           <a href="/fantasycompare/"><span>Fantasy Compare</span></a>
+         </div>
+       </li>
+
+      <li class="button">
+        <a href=""><span>Play Type</span> <i class="fa fa-caret-down"></i></a>
+        <div class="drop">
+          <a href="/playtype/"><span>Summary</span></a>
+          <a href="/playtype/#!/transition/?dir=1"><span>Transition</span></a>
+          <a href="/playtype/#!/isolation/?dir=1"><span>Isolation</span></a>
+          <a href="/playtype/#!/ball-handler/?dir=1"><span>Pick &amp; Roll: Ball Handler</span></a>
+          <a href="/playtype/#!/roll-man/?dir=1"><span>Pick &amp; Roll: Roll Man</span></a>
+          <a href="/playtype/#!/post-up/?dir=1"><span>Post-Up</span></a>
+          <a href="/playtype/#!/spot-up/?dir=1"><span>Spot-Up</span></a>
+          <a href="/playtype/#!/hand-off/?dir=1"><span>Hand-Off</span></a>
+          <a href="/playtype/#!/cut/?dir=1"><span>Cut</span></a>
+          <a href="/playtype/#!/off-screen/?dir=1"><span>Off Screen</span></a>
+          <a href="/playtype/#!/putbacks/?dir=1"><span>Putbacks</span></a>
+          <a href="/playtype/#!/misc/?dir=1"><span>Miscellaneous</span></a>
+        </div>
+      </li>
+
+      <li class="button">
+        <a href=""><span>Player Tracking</span> <i class="fa fa-caret-down"></i></a>
+        <div class="drop">
+          <a href="/tracking/#!/player/"><span>What is Player Tracking?</span></a>
+          <a href="/tracking/#!/player/catchshoot/"><span>Catch and Shoot</span></a>
+          <a href="/tracking/#!/player/defense/"><span>Defensive Impact</span></a>
+          <a href="/tracking/#!/player/drives/"><span>Drives</span></a>
+          <a href="/tracking/#!/player/passing/"><span>Passing</span></a>
+          <a href="/tracking/#!/player/possessions/"><span>Touches/Possession</span></a>
+          <a href="/tracking/#!/player/pullup/"><span>Pullup Shooting</span></a>
+          <a href="/tracking/#!/player/rebounding/"><span>Rebounding Opportunities</span></a>
+          <a href="/tracking/#!/player/shooting/"><span>Shooting Efficiency</span></a>
+          <a href="/tracking/#!/player/speed/"><span>Speed and Distance</span></a>
+        </div>
+      </li>
+
+      <!-- <li class="button">
+        <a href="/players/"><span>Players</span></a>
+      </li>
+
+      <li class="button">
+        <a href="/teams/"><span>Teams</span></a>
+      </li>
+
+      <li class="button">
+        <a href=""><span>League</span> <i class="fa fa-caret-down"></i></a>
+        <div class="drop">
+          <a href="/league/team/"><span>Team</span></a>
+          <a href="/league/player/"><span>Player</span></a>
+          <a href="/league/lineups/"><span>Lineups</span></a>
+          <a href="/standings/"><span>Standings</span></a>
+        </div>
+      </li>
+
+      <li class="button">
+        <a href=""><span>Leaders</span> <i class="fa fa-caret-down"></i></a>
+        <div class="drop">
+          <a href="/leaders/seasontiles"><span>Season Leaders</span></a>
+          <a href="/leaders/alltime/"><span>All-Time Leaders</span></a>
+        </div>
+      </li> -->
+
+      <li class="button">
+        <a href=""><span>Team Stats</span> <i class="fa fa-caret-down"></i></a>
+        <div class="drop">
+          <a href="/teams/"><span>Team Index</span></a>
+          <a href="/league/team/"><span>Sortable Team Stats</span</a>
+          <a href="/league/lineups/"><span>Team Lineups</span></a>
+          <a href="/league/team/shots/"><span>Team Tracking Shots</span></a>
+          <a href="/league/team/defense/"><span>Team Tracking Defense</span></a>
+          <a href="/standings/"><span>Team Standings</span></a>
+        </div>
+      </li>
+
+      <li class="button">
+        <a href=""><span>Player Stats</span> <i class="fa fa-caret-down"></i></a>
+        <div class="drop">
+          <a href="/players/"><span>Player Index</span></a>
+          <a href="/league/player/"><span>Sortable Player Stats</span</a>
+          <a href="/league/player/shots/"><span>Player Tracking Shots</span></a>
+          <a href="/league/player/defense/"><span>Player Tracking Defense</span></a>
+        </div>
+      </li>
+
+      <li class="button">
+        <a href=""><span>League Leaders</span> <i class="fa fa-caret-down"></i></a>
+        <div class="drop">
+          <a href="/leaders/seasontiles/"><span>Official League Leaders</span></a>
+          <a href="/leaders/alltime/"><span>All-Time Leaders</span</a>
+          <a href="/league/player/#!/?sort=PTS"><span>Custom League Leaders</span></a>
+          <a href="/league/player/#!/clutch/?sort=PTS"><span>Clutch Leaders</span></a>
+          <a href="/league/player/#!/?PlayerExperience=Rookie&amp;sort=PTS"><span>Rookie Leaders</span></a>
+          <a href="/league/team/#!/advanced/?sort=NET_RATING"><span>Team Efficiency Leaders</span></a>
+        </div>
+      </li>
+
+      <li class="button">
+        <a href=""><span>Finals</span> <i class="fa fa-caret-down"></i></a>
+        <div class="drop">
+          <a href="/finals/2015-game-1-preview.html"><span>Finals 2015 - Game 1</span></a>
+          <a href="/finals/2015-game-2-preview.html"><span>Finals 2015 - Game 2</span></a>
+          <a href="/finals/2015-game-3-preview.html"><span>Finals 2015 - Game 3</span></a>
+          <a href="/finals/2015-game-4-preview.html"><span>Finals 2015 - Game 4</span></a>
+          <a href="/finals/2015-game-5-preview.html"><span>Finals 2015 - Game 5</span></a>
+          <a href="/finals/2015-game-6-preview.html"><span>Finals 2015 - Game 6</span></a>
+        </div>
+      </li>
+
+      <li class="button">
+        <a href=""><span>All Star</span> <i class="fa fa-caret-down"></i></a>
+        <div class="drop">
+          <a href="/featured/allstar2015_sunday.html"><span>All-Star 2015 - Sunday</span></a>
+          <a href="/featured/allstar2015_saturday.html"><span>All-Star 2015 - Saturday</span></a>
+          <a href="/featured/allstar2015_friday.html"><span>All-Star 2015 - Friday</span></a>
+          <a href="/league/allstar/"><span>All-Star Stats</span></a>
+          <a href="/team/#!/1610616833/"><span>East Team Stats</span</a>
+          <a href="/team/#!/1610616834/"><span>West Team Stats</span></a>
+        </div>
+      </li>
+
+      <li class="button">
+        <a href="/scores/" target="_self"><span>Scores</span></a>
+      </li>
+      <li class="button">
+          <a href="/"><span>Stats Home</span></a>
+      </li>
+
+    </ul>
+
+  </div>
+
+  <ul class="mobile-nav-buttons hidden-lg hidden-xl col-sm-12 col-xs-12 list-unstyled" ng-if="!headerIsCollapsed">
+    <li class="button col-xs-6 col-md-3"><a href="/"><span>Stats Home</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/scores/"><span>Scores</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/featured/allstar2015_sunday.html"><span>All-Star 2015 - Sunday</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/featured/allstar2015_saturday.html"><span>All-Star 2015 - Saturday</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/featured/allstar2015_friday.html"><span>All-Star 2015 - Friday</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/league/allstar/"><span>All-Star Stats</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/team/#!/1610616833/"><span>All-Star East Team Stats</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/team/#!/1610616834/"><span>All-Star West Team Stats</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/finals/2015-game-1-preview.html"><span>Finals 2015 - Game 1</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/finals/2015-game-2-preview.html"><span>Finals 2015 - Game 2</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/finals/2015-game-3-preview.html"><span>Finals 2015 - Game 3</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/finals/2015-game-4-preview.html"><span>Finals 2015 - Game 4</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/finals/2015-game-5-preview.html"><span>Finals 2015 - Game 5</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/finals/2015-game-6-preview.html"><span>Finals 2015 - Game 6</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/league/allstar/"><span>All-Star Stats</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/team/#!/1610616833/"><span>All-Star East Team Stats</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/team/#!/1610616834/"><span>All-Star West Team Stats</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/leaders/seasontiles/"><span>Official League Leaders</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/leaders/alltime/"><span>All-Time Leaders</span</a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/league/player/#!/?sort=PTS"><span>Custom League Leaders</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/league/player/#!/clutch/?sort=PTS"><span>Clutch Leaders</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/league/player/#!/?PlayerExperience=Rookie&amp;sort=PTS"><span>Rookie Leaders</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/league/team/#!/advanced/?sort=NET_RATING"><span>Team Efficiency Leaders</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/players/"><span>Player Index</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/league/player/"><span>Sortable Player Stats</span</a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/league/player/shots/"><span>Player Tracking Shots</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/league/player/defense/"><span>Player Tracking Defense</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/teams/"><span>Team Index</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/league/team/"><span>Sortable Team Stats</span</a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/league/lineups/"><span>Team Lineups</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/league/team/shots/"><span>Team Tracking Shots</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/league/team/defense/"><span>Team Tracking Defense</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/playtype/"><span>Play Type</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/standings/"><span>Team Standings</span></a></li>
+    <!-- <li class="button col-xs-6 col-md-3"><a href="/playoffpicture/" ><span>Playoff Picture</span></a></li> -->
+    <li class="button col-xs-6 col-md-3"><a href="http://www.nba.com/playoffs/" ><span>Playoff Picture</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/vs/"><span>On/Off Court</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/fantasycompare/"><span>Fantasy Compare</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/history/"><span>Franchise History</span></a></li>
+    <!-- <li class="button col-xs-6 col-md-3"><a href="/draft/"><span>Draft History</span></a></li> -->
+    <li class="button col-xs-6 col-md-3"><a href="/draftcombine/"><span>Draft Combine</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/drafthistory/"><span>Draft History</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/transactions/"><span>Transactions</span></a></li>
+    <!-- <li class="button col-xs-6 col-md-3"><a href="/video/"><span>Video</span></a></li> -->
+    <li class="button col-xs-6 col-md-3"><a href="/help/"><span>Contact Us</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/help/glossary"><span>Glossary</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/help/faq/"><span>FAQ</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/help/statminimums/"><span>Statistical Minimums</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/help/whatsnew/"><span>Whats New</span></a></li>
+    <li class="button col-xs-6 col-md-3"><a href="/help/videostatus/"><span>Video &amp; Tracking Status</span></a></li>
+  </ul>
+
+</div>
+
+    <div class="row esi china-promo-row">
+  
+ </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="stats-player-list-page">
+
+  <div class="page-header">
+    <div class="content-left">
+      <span class="breadcrumb"><a href="/">NBA.com/Stats</a> / <span><a href="/players/">Players</a></span> </span>
+      <h1>Player Index</h1>
+    </div>
+    <div class="content-right sap-header">
+  <img class="visible-lg visible-md sap" src="/media/img/header_SAP.svg">
+  <img class="visible-lg visible-md no-branding esi" src="/media/img/header_nobranding.svg" />   
+  <img class="visible-sm visible-xs sap" src="/media/img/header_SAP_mobile.svg">
+  <img class="visible-sm visible-xs no-branding esi" src="/media/img/mobile_SAP_mainheader_nobranding.png" />
+</div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div data-ng-controller="PlayerListCtrl" class="stats-player-list" data-ng-cloak>
+    <div class="stat-table">
+        <div class="title">
+            <div class="row player-search-row">
+                <div class="col-md-6 col-sm-6 ">
+                    <span>Find All Players (Current/Historical)</span>
+                </div>
+                <div class="col-md-6 col-sm-6 search-col">
+                    <div class="search-viewall pull-right">
+                        <input type="text" ng-model="search" placeholder="Search By Name" />
+                        <div class="btn-group switch-list">
+                                <a href="#" class="btn" ng-click="onlyActive=true" ng-class="{active:onlyActive}">Active</a>
+                                <a href="#" class="btn" ng-click="onlyActive=false" ng-class="{active:!onlyActive}">Historic</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="stats-table-config">
+            <div class="col-sm-4 col-xs-12">
+                <div class="quick-jump">Use the quick jump links to find players by last name</div>
+            </div>
+            <div class="col-md-8 col-sm-8  letters" ng-show="lettersOrInput!=='full'"> <a ng-repeat="letter in alphabet" ng-class="{active:selectedLetter==letter}" ng-click="onlyInitial(letter)">{{::letter}}</a>
+            </div>
+            <div ng-show="lettersOrInput==='full'">
+                <div class="col-md-3">
+                    <input type="text" ng-model="searchText" placeholder="Enter Name:" />
+                </div>
+            </div>
+        </div>
+    </div>
+        <div data-ng-show="isLoading" class="loader">
+        <img src="/media/img/loader.gif" />
+        <br/>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row player-list-row" ng-repeat="letter in letters" ng-hide="shouldHideLetter(letter)" ng-class="{historic:!onlyActive}">
+                <div stats-player-list-row letter="letter"></div>
+            </div>
+        </div>
+        <!--Temporarily removing as per NBAD request on 2/5/2015. Leaving in case we ever need to traffic anything
+        <div class="col-lg-3">
+            <div data-ng-if="!IS_MOBILE" class="ad-spot pull-right">
+                <br/><br/>
+                <div class="visible-lg" id="ad_sky_btf_01"></div>
+            </div>
+        </div>
+        -->
+    </div>
+</div>    </div>
+  </div>
+
+</div>
+
+
+
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="row visible-lg" data-ng-if="!IS_MOBILE">
+  <div class="col-sm-12">
+    <div class="footer nbaThird" id="nbaFooter">
+      <script src="http://i.cdn.turner.com/nba/nba/.element/js/global/2.0/nba-footer.js"></script>
+    </div>
+  </div>
+</div>
+
+<div class="row hidden-lg">
+  <div class="col-sm-12">
+    <div class="footer">
+      <small>
+        Copyright 2015 NBA Media Ventures, LLC | NBA Media Ventures, LLC. All rights reserved.<br/>
+        No portion of this site may be duplicated, redistributed or manipulated in any form.<br/>
+        By accessing any information on this site, you agree to abide by the NBA.com Network Privacy Policy and Terms of Use.
+      </small>
+    </div>
+  </div>
+</div>          </div>
+        </div>
+
+      </div> <!-- .container -->
+    </div> <!-- #app-container -->
+
+    
+  <script>
+    if (!window.console) {
+      console = { log: function() {} };
+    }
+  </script>
+
+  <script src="/scripts/vendor.min.js"></script>
+  <script src="/scripts/custom.min.js"></script>
+    <!-- turners header -->
+<script src="http://i.cdn.turner.com/nba/nba/.element/js/global/2.0/nba-navigation.js"></script>
+
+<!-- turner ad tag includes -->
+<script src="http://i.cdn.turner.com/analytics/nba/ais.js"></script>
+<script src="http://i.cdn.turner.com/ads/nba/adfuel.js"></script>
+<script src="http://i.cdn.turner.com/ads/nba/nba_stats_main.js"></script>
+
+<!-- turner nba ros node tag -->
+<script type="text/javascript" src="http://content.dl-rms.com/rms/mother/18184/nodetag.js"></script>
+
+
+    <!-- GA and page tracking scripts -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50436523-1', 'nba.com');
+  ga('send', 'pageview');
+</script>
+
+<!-- /GA and page tracking scripts -->
+
+<!-- BEGIN: NBA analytics package snippet. -->
+<!-- Should be as close the the closing "body" tag as possible. -->
+<script id="_nbaScoutAnalytics" src="http://z.cdn.turner.com/nba/tmpl_asset/static/nba-cms3-base/latest/js/pkgAnalyticsScout-min.js"></script>
+<script>
+	initOmniture();
+	_nba.analytics.setOverride("disableAutoPage",true);
+
+	if (_nba && _nba.settings && _nba.settings.global) {
+	   _nba.settings.global.experience="responsive";
+	}
+</script>
+<!-- END: NBA analytics package snippet. -->
+
+    
+<div class="esi">
+
+  
+        <!--do nothing-->
+    
+
+
+  
+
+
+  
+
+ <style>
+           @media (min-width: 1200px){
+            .page-header .content-right.sap-header img.no-branding.visible-lg {display: none !important;}
+            .page-header .content-right.sap-header img.sap.visible-lg {display: block !important;}
+           }    
+           @media (max-width: 1199px) and (min-width: 992px){
+            .page-header .content-right.sap-header img.no-branding.visible-md {display: none !important;}
+            .page-header .content-right.sap-header img.sap.visible-md {display: block !important;}
+           }
+           @media (max-width: 991px) and (min-width: 768px){
+            .page-header .content-right.sap-header img.no-branding.visible-sm {display: none !important;}
+            .page-header .content-right.sap-header img.sap.visible-sm {display: block !important;}
+           }
+           @media (max-width: 767px){
+            .page-header .content-right.sap-header img.no-branding.visible-xs {display: none !important;}
+            .page-header .content-right.sap-header img.sap.visible-xs {display: block !important;}
+           }    
+        </style>
+
+      
+          
+        
+
+<!--common click through-->
+
+<a id="sapSponserClickThroughURL" href="http://t.mookie1.com/t/v1/clk?migAgencyId=347&migSource=adsrv2&migTrackDataExt=3143259;106063877;278930987;0&migRandom=[1436725062]&migTrackFmtExt=client;io;ad;crtv&migUnencodedDest=http://ad.doubleclick.net/ddm/clk/287875440;114715162;i;pc=[TPAS_ID]"></a>
+
+<a id="sapBeyondClickThroughURL" href="http://t.mookie1.com/t/v1/clk?migAgencyId=347&migSource=adsrv2&migTrackDataExt=3143259;106063875;278930978;0&migRandom=[1436725062
+        ]&migTrackFmtExt=client;io;ad;crtv&migUnencodedDest=http://ad.doubleclick.net/ddm/clk/287875440;114715162;i;pc=[TPAS_ID]"></a>
+
+<img style="display:none;" src="http://t.mookie1.com/t/v1/imp?migAgencyId=347&migSource=adsrv2&migTrackDataExt=3143259;106063877;278930987;0&migTrackFmtExt=client;io;ad;crtv&migUnencodedDest=http://ad.doubleclick.net/ad/N69702.149455NBAMEDIAVENTURESLLC/B8466269.114715162;sz=1x1;pc=[TPAS_ID];ord=[1436725062]?" width="1" height="1">
+
+        
+
+    
+
+</div>
+
+  </body>
+</html>
